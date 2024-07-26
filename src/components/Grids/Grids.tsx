@@ -1,5 +1,8 @@
 import { Container, Grid, SimpleGrid, Skeleton, rem } from "@mantine/core";
 
+// component
+import Lotto from "../ItemsList/Lotto";
+
 const PRIMARY_COL_HEIGHT = rem(300);
 
 export function LeadGrid() {
@@ -11,11 +14,7 @@ export function LeadGrid() {
         <Skeleton height={PRIMARY_COL_HEIGHT} radius="md" animate={false} />
         <Grid gutter="md">
           <Grid.Col>
-            <Skeleton
-              height={SECONDARY_COL_HEIGHT}
-              radius="md"
-              animate={false}
-            />
+            <Lotto />
           </Grid.Col>
           <Grid.Col span={6}>
             <Skeleton
