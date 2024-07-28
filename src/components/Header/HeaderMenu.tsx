@@ -5,7 +5,7 @@ import { MantineLogo } from "@mantinex/mantine-logo";
 import classes from "./HeaderMenu.module.css";
 
 const links = [
-  { link: "/about", label: "Features" },
+  { link: "/about", label: "Check Your Numbers" },
   {
     link: "#1",
     label: "Learn",
@@ -16,17 +16,7 @@ const links = [
       { link: "/blog", label: "Blog" },
     ],
   },
-  { link: "/about", label: "About" },
-  { link: "/pricing", label: "Pricing" },
-  {
-    link: "#2",
-    label: "Support",
-    links: [
-      { link: "/faq", label: "FAQ" },
-      { link: "/demo", label: "Book a demo" },
-      { link: "/forums", label: "Forums" },
-    ],
-  },
+  { link: "/about", label: "Statistics" },
 ];
 
 export function HeaderMenu() {
