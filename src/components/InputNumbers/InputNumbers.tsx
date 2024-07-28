@@ -34,7 +34,7 @@ export function InputNumbers({
     } else {
       alert(`Submitted numbers: ${numbers.join(", ")}`);
       setNumbers(Array(6).fill(0)); // Reset the input fields
-      // Aquí puedes añadir la lógica para enviar los números a tu backend.
+      // Pending to add server side logic
       if (onSubmit) {
         onSubmit(numbers);
       }
