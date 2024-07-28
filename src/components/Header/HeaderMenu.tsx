@@ -6,17 +6,17 @@ import classes from "./HeaderMenu.module.css";
 
 const links = [
   { link: "/about", label: "Check Your Numbers" },
+  { link: "/about", label: "Statistics" },
   {
     link: "#1",
-    label: "Learn",
+    label: "Admin",
     links: [
-      { link: "/docs", label: "Documentation" },
+      { link: "/docs", label: "Add Numbers" },
       { link: "/resources", label: "Resources" },
       { link: "/community", label: "Community" },
       { link: "/blog", label: "Blog" },
     ],
   },
-  { link: "/about", label: "Statistics" },
 ];
 
 export function HeaderMenu() {
