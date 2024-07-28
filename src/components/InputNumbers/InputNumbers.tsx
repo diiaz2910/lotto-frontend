@@ -7,7 +7,7 @@ import { InputNumbersProps } from "../../interfaces/index";
 // styles
 import styles from "../Styles/InputNumbers.module.css";
 
-function InputNumbers({
+export function InputNumbers({
   title = "Enter Your Numbers",
   placeholderPrefix = "N",
   buttonText = "Submit",
@@ -19,25 +19,25 @@ function InputNumbers({
 
   const handleChange = (index: number, value: string) => {
     const num = parseInt(value, 10);
-    if (!isNaN(num)) {
-      const newNumbers = [...numbers];
-      newNumbers[index] = num;
-      setNumbers(newNumbers);
-    }
+    const newNumbers = [...numbers];
+    newNumbers[index] = isNaN(num) ? 0 : num;
+    setNumbers(newNumbers);
   };
 
   const handleSubmit = () => {
     const uniqueNumbers = new Set(numbers);
+
     if (uniqueNumbers.size !== 6) {
       alert("All numbers must be unique.");
-    } else if (numbers.some((num) => num < minNumber || num > maxNumber)) {
-      alert(`Numbers must be between ${minNumber} and ${maxNumber}.`);
+    } else if (numbers.some((num) => num < 1 || num > 40)) {
+      alert("Numbers must be between 1 and 40.");
     } else {
       alert(`Submitted numbers: ${numbers.join(", ")}`);
+      setNumbers(Array(6).fill(0)); // Reset the input fields
+      // Aquí puedes añadir la lógica para enviar los números a tu backend.
       if (onSubmit) {
         onSubmit(numbers);
       }
-      // Pending to feed server.
     }
   };
 
