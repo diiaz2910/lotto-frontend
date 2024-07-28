@@ -4,6 +4,7 @@ import React from "react";
 import { HeaderMenu } from "../components/Header/HeaderMenu";
 import { LeadGrid } from "../components/Grids/Grids";
 import { FooterCentered } from "../components/Footer/Footer";
+import InputNumbers from "../components/InputNumbers/InputNumbers";
 
 const Home: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const Home: React.FC = () => {
         <h1>Home Page</h1>
       </div>
       <LeadGrid />
+      <InputNumbers />
       <FooterCentered />
     </div>
   );

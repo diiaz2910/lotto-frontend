@@ -1,0 +1,19 @@
+.container {
+  height: 50vh;
+}
+
+.flex {
+  height: 100%;
+}
+
+.title {
+  text-align: center;
+}
+
+.input {
+  width: 100%;
+}
+
+.button {
+  margin-top: 1rem;
+}
