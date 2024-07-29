@@ -8,7 +8,7 @@ import { InputNumbersProps } from "../../interfaces/index";
 import styles from "../Styles/InputNumbers.module.css";
 
 export function InputNumbers({
-  title = "Enter Your Numbers",
+  title = "Enter Your Lotto Numbers",
   placeholderPrefix = "N",
   buttonText = "Submit",
   minNumber = 1,

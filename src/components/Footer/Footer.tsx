@@ -5,13 +5,11 @@ import {
   IconBrandInstagram,
 } from "@tabler/icons-react";
 import { MantineLogo } from "@mantinex/mantine-logo";
+
+// styles
 import classes from "./Footer.module.css";
 
-const links = [
-  { link: "#", label: "Contact" },
-  { link: "#", label: "Privacy" },
-  { link: "#", label: "Blog" },
-];
+const links = [{ link: "#", label: "Contact" }];
 
 export function FooterCentered() {
   const items = links.map((link) => (

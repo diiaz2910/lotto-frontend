@@ -12,6 +12,7 @@ const Home: React.FC = () => {
       <HeaderMenu />
       <div>
         <h1>Home Page</h1>
+        <p>Description.......</p>
       </div>
       <LeadGrid />
       <InputNumbers />
