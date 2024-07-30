@@ -3,12 +3,16 @@
   <img src="https://github.com/diiaz2910/assets-repo/blob/master/png-transparent-google-colab-logo-tech-companies-removebg-preview.png?raw=true" width="300">
   <a href="https://reactjs.org" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" width="200" alt="React Logo"></a>
   <h1>Lotto Project</h1>
-  <p>" This Lotto project aims to display statistics about numbers in the New Zealand lottery game. It will present numbers and statistics obtained from Google Colab, and display them on both web and mobile applications. The app is designed to be updated every time a game is played, ensuring that the data and statistics remain current.</p>
+  <p>This Lotto project aims to display statistics about numbers in the New Zealand lottery game. It will present numbers and statistics obtained from Google Colab, and display them on both web and mobile applications. The app is designed to be updated every time a game is played, ensuring that the data and statistics remain current.</p>
 </div>
 
 
 ### Description:
 This project is the frontend for the Lotto application, designed to display a series of data analyses for the New Zealand lottery. The application is built with React, TypeScript, Vite, Apollo, and GraphQL. It features a custom Mantine template with a variety of components for a rich user interface. Data will be fetched from Google Colab, connected with MongoDB.
+
+### Current Status:
+COLAB Connected to MongoDB and fetching data done. GRAPHQL Server working receiving queries from playground/postman and pending to deploy on VERCEL.
+Developing forms to connect front and back and writing graphql documentation on frontend project. 
 
 ### Features:
 - **Vite**: Fast build tool and development server.
