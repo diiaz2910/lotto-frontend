@@ -12,7 +12,8 @@ This project is the frontend for the Lotto application, designed to display a se
 
 ### Current Status:
 COLAB Connected to MongoDB and fetching data done. GRAPHQL Server working receiving queries from playground/postman and pending to deploy on VERCEL.
-Developing forms to connect front and back and writing graphql documentation on frontend project. 
+Developing forms to connect front and back and writing graphql documentation on frontend project.
+Evualuating best way to present charts and tables with search and sort.
 
 ### Features:
 - **Vite**: Fast build tool and development server.
