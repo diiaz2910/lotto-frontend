@@ -1,10 +1,8 @@
 import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
 import { Container, TextInput, Button, Grid, Flex } from "@mantine/core";
-
-// interfaces
+import { CREATE_COMBINATION } from "../../queries/mutations";
 import { InputNumbersProps } from "../../interfaces/index";
-
-// styles
 import styles from "../Styles/InputNumbers.module.css";
 
 export function InputNumbers({
@@ -16,6 +14,7 @@ export function InputNumbers({
   onSubmit,
 }: InputNumbersProps) {
   const [numbers, setNumbers] = useState<number[]>(Array(6).fill(0));
+  const [createCombination] = useMutation(CREATE_COMBINATION);
 
   const handleChange = (index: number, value: string) => {
     const num = parseInt(value, 10);
@@ -24,7 +23,7 @@ export function InputNumbers({
     setNumbers(newNumbers);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const uniqueNumbers = new Set(numbers);
 
     if (uniqueNumbers.size !== 6) {
@@ -32,11 +31,16 @@ export function InputNumbers({
     } else if (numbers.some((num) => num < 1 || num > 40)) {
       alert("Numbers must be between 1 and 40.");
     } else {
-      alert(`Submitted numbers: ${numbers.join(", ")}`);
-      setNumbers(Array(6).fill(0)); // Reset the input fields
-      // Pending to add server side logic
-      if (onSubmit) {
-        onSubmit(numbers);
+      try {
+        await createCombination({ variables: { numbers } });
+        alert(`Submitted numbers: ${numbers.join(", ")}`);
+        setNumbers(Array(6).fill(0)); // Reset the input fields
+        if (onSubmit) {
+          onSubmit(numbers);
+        }
+      } catch (error) {
+        console.error(error);
+        alert("Error submitting numbers. Please try again.");
       }
     }
   };
