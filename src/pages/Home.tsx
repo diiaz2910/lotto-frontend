@@ -5,6 +5,7 @@ import { HeaderMenu } from "../components/Header/HeaderMenu";
 import { LeadGrid } from "../components/Grids/Grids";
 import { FooterCentered } from "../components/Footer/Footer";
 import InputNumbers from "../components/InputNumbers/InputNumbers";
+import { ChartsCards } from "../components/ChartsCards/ChartsCards";
 
 const Home: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ const Home: React.FC = () => {
       <HeaderMenu />
       <LeadGrid />
       <InputNumbers />
+      <ChartsCards />
       <FooterCentered />
     </div>
   );
