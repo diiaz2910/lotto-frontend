@@ -2,17 +2,12 @@
 import {
   Card,
   Image,
-  ActionIcon,
   Group,
   Text,
-  Avatar,
-  Badge,
   useMantineTheme,
-  rem,
   Container,
   SimpleGrid,
 } from "@mantine/core";
-import { IconHeart, IconBookmark, IconShare } from "@tabler/icons-react";
 import { useQuery } from "@apollo/client";
 
 // queries
