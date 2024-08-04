@@ -9,6 +9,7 @@
 
 ### Description:
 This project is the frontend for the Lotto application, designed to display a series of data analyses for the New Zealand lottery. The application is built with React, TypeScript, Vite, Apollo, and GraphQL. It features a custom Mantine template with a variety of components for a rich user interface. Data will be fetched from Google Colab, connected with MongoDB.
+<br><br>----Backend should be running to see data
 
 
 ### Current Status:
