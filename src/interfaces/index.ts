@@ -6,3 +6,9 @@ export interface InputNumbersProps {
   maxNumber?: number;
   onSubmit?: (numbers: number[]) => void;
 }
+
+export interface Chart {
+  _id: string;
+  imageUrl: string;
+  description: string;
+}

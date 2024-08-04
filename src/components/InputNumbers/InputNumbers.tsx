@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { Container, TextInput, Button, Grid, Flex } from "@mantine/core";
+
+// queries
 import { CREATE_COMBINATION } from "../../queries/mutations";
+
+// interfaces
 import { InputNumbersProps } from "../../interfaces/index";
+
+// styles
 import styles from "../Styles/InputNumbers.module.css";
 
 export function InputNumbers({
