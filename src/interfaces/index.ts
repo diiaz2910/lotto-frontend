@@ -11,4 +11,5 @@ export interface Chart {
   _id: string;
   imageUrl: string;
   description: string;
+  index: number;
 }

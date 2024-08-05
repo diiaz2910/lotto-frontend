@@ -56,6 +56,18 @@ export const GET_CHART = gql`
       _id
       description
       imageUrl
+      index
+    }
+  }
+`;
+
+export const GET_LAST_CHART = gql`
+  query GetLastChart {
+    getLastChart {
+      _id
+      description
+      imageUrl
+      index
     }
   }
 `;
