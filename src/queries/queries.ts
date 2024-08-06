@@ -71,3 +71,13 @@ export const GET_LAST_CHART = gql`
     }
   }
 `;
+
+export const GET_LAST_BONUS = gql`
+  query GetLastBonus {
+    getLastBonus {
+      _id
+      index
+      numbers
+    }
+  }
+`;
