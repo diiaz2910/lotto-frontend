@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import { Container, TextInput, Button, Grid, Flex } from "@mantine/core";
+import {
+  Container,
+  TextInput,
+  Button,
+  Grid,
+  Flex,
+  SimpleGrid,
+} from "@mantine/core";
 
 // queries
 import { CREATE_COMBINATION } from "../../queries/mutations";
@@ -53,34 +60,120 @@ export function InputNumbers({
 
   return (
     <Container className={styles.container}>
-      <Flex
-        direction="column"
-        align="center"
-        justify="center"
-        className={styles.flex}
-      >
-        <h1 className={styles.title}>{title}</h1>
-        <Grid>
-          {numbers.map((number, index) => (
-            <Grid.Col span={4} key={index}>
-              <TextInput
-                placeholder={`${placeholderPrefix}${index + 1}`}
-                value={number === 0 ? "" : number.toString()}
-                onChange={(event) =>
-                  handleChange(index, event.currentTarget.value)
-                }
-                type="number"
-                min={minNumber}
-                max={maxNumber}
-                className={styles.input}
-              />
-            </Grid.Col>
-          ))}
-        </Grid>
-        <Button mt="md" onClick={handleSubmit} className={styles.button}>
-          {buttonText}
-        </Button>
-      </Flex>
+      <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
+        <Flex
+          direction="column"
+          align="center"
+          justify="center"
+          className={styles.flex}
+        >
+          <h1 className={styles.title}>{title}</h1>
+          <Grid>
+            {numbers.map((number, index) => (
+              <Grid.Col span={4} key={index}>
+                <TextInput
+                  placeholder={`${placeholderPrefix}${index + 1}`}
+                  value={number === 0 ? "" : number.toString()}
+                  onChange={(event) =>
+                    handleChange(index, event.currentTarget.value)
+                  }
+                  type="number"
+                  min={minNumber}
+                  max={maxNumber}
+                  className={styles.input}
+                />
+              </Grid.Col>
+            ))}
+          </Grid>
+          <Button mt="md" onClick={handleSubmit} className={styles.button}>
+            {buttonText}
+          </Button>
+        </Flex>
+        <Flex
+          direction="column"
+          align="center"
+          justify="center"
+          className={styles.flex}
+        >
+          <h1 className={styles.title}>{title}</h1>
+          <Grid>
+            {numbers.map((number, index) => (
+              <Grid.Col span={4} key={index}>
+                <TextInput
+                  placeholder={`${placeholderPrefix}${index + 1}`}
+                  value={number === 0 ? "" : number.toString()}
+                  onChange={(event) =>
+                    handleChange(index, event.currentTarget.value)
+                  }
+                  type="number"
+                  min={minNumber}
+                  max={maxNumber}
+                  className={styles.input}
+                />
+              </Grid.Col>
+            ))}
+          </Grid>
+          <Button mt="md" onClick={handleSubmit} className={styles.button}>
+            {buttonText}
+          </Button>
+        </Flex>
+        <Flex
+          direction="column"
+          align="center"
+          justify="center"
+          className={styles.flex}
+        >
+          <h1 className={styles.title}>{title}</h1>
+          <Grid>
+            {numbers.map((number, index) => (
+              <Grid.Col span={4} key={index}>
+                <TextInput
+                  placeholder={`${placeholderPrefix}${index + 1}`}
+                  value={number === 0 ? "" : number.toString()}
+                  onChange={(event) =>
+                    handleChange(index, event.currentTarget.value)
+                  }
+                  type="number"
+                  min={minNumber}
+                  max={maxNumber}
+                  className={styles.input}
+                />
+              </Grid.Col>
+            ))}
+          </Grid>
+          <Button mt="md" onClick={handleSubmit} className={styles.button}>
+            {buttonText}
+          </Button>
+        </Flex>
+        <Flex
+          direction="column"
+          align="center"
+          justify="center"
+          className={styles.flex}
+        >
+          <h1 className={styles.title}>{title}</h1>
+          <Grid>
+            {numbers.map((number, index) => (
+              <Grid.Col span={4} key={index}>
+                <TextInput
+                  placeholder={`${placeholderPrefix}${index + 1}`}
+                  value={number === 0 ? "" : number.toString()}
+                  onChange={(event) =>
+                    handleChange(index, event.currentTarget.value)
+                  }
+                  type="number"
+                  min={minNumber}
+                  max={maxNumber}
+                  className={styles.input}
+                />
+              </Grid.Col>
+            ))}
+          </Grid>
+          <Button mt="md" onClick={handleSubmit} className={styles.button}>
+            {buttonText}
+          </Button>
+        </Flex>
+      </SimpleGrid>
     </Container>
   );
 }
