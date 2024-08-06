@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import { TextInput, Button, Grid, Flex } from "@mantine/core";
+import { TextInput, Button, Grid, Flex, GridCol } from "@mantine/core";
 
 // queries
-import { CREATE_COMBINATION } from "../../queries/mutations";
+import { CREATE_BONUS } from "../../queries/mutations";
 
 // interfaces
 import { InputNumbersProps } from "../../interfaces/index";
@@ -11,16 +11,16 @@ import { InputNumbersProps } from "../../interfaces/index";
 // styles
 import styles from "../Styles/InputNumbers.module.css";
 
-export function InputForm1({
-  title = "Enter New Lotto Numbers",
+export function InputFormBonus({
+  title = "Bonus",
   placeholderPrefix = "N",
   buttonText = "Submit",
   minNumber = 1,
   maxNumber = 40,
   onSubmit,
 }: InputNumbersProps) {
-  const [numbers, setNumbers] = useState<number[]>(Array(6).fill(0));
-  const [createCombination] = useMutation(CREATE_COMBINATION);
+  const [numbers, setNumbers] = useState<number[]>(Array(1).fill(0));
+  const [createBonus] = useMutation(CREATE_BONUS);
 
   const handleChange = (index: number, value: string) => {
     const num = parseInt(value, 10);
@@ -30,17 +30,13 @@ export function InputForm1({
   };
 
   const handleSubmit = async () => {
-    const uniqueNumbers = new Set(numbers);
-
-    if (uniqueNumbers.size !== 6) {
-      alert("All numbers must be unique.");
-    } else if (numbers.some((num) => num < 1 || num > 40)) {
+    if (numbers.some((num) => num < 1 || num > 40)) {
       alert("Numbers must be between 1 and 40.");
     } else {
       try {
-        await createCombination({ variables: { numbers } });
-        alert(`Submitted numbers: ${numbers.join(", ")}`);
-        setNumbers(Array(6).fill(0)); // Reset the input fields
+        await createBonus({ variables: { numbers } });
+        alert(`Submitted numbers: ${numbers}`);
+        setNumbers(Array(1).fill(0));
         if (onSubmit) {
           onSubmit(numbers);
         }
@@ -62,9 +58,9 @@ export function InputForm1({
         <h1 className={styles.title}>{title}</h1>
         <Grid>
           {numbers.map((number, index) => (
-            <Grid.Col span={4} key={index}>
+            <GridCol span={12} key={index}>
               <TextInput
-                placeholder={`${placeholderPrefix}${index + 1}`}
+                placeholder={`${placeholderPrefix} ${index + 1}`}
                 value={number === 0 ? "" : number.toString()}
                 onChange={(event) =>
                   handleChange(index, event.currentTarget.value)
@@ -74,10 +70,10 @@ export function InputForm1({
                 max={maxNumber}
                 className={styles.input}
               />
-            </Grid.Col>
+            </GridCol>
           ))}
         </Grid>
-        <Button mt="md" onClick={handleSubmit} className={styles.button}>
+        <Button onClick={handleSubmit} className={styles.button}>
           {buttonText}
         </Button>
       </Flex>
@@ -85,4 +81,4 @@ export function InputForm1({
   );
 }
 
-export default InputForm1;
+export default InputFormBonus;
