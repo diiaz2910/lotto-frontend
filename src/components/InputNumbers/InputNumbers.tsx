@@ -6,6 +6,7 @@ import styles from "../Styles/InputNumbers.module.css";
 
 import InputFormLotto from "./InputFormLotto";
 import InputFormBonus from "./InputFormBonus";
+import InputFormPowerBall from "./InputFormPowerBall";
 
 const InputNumbers = () => {
   return (
@@ -14,7 +15,7 @@ const InputNumbers = () => {
       <SimpleGrid cols={{ base: 2, sm: 4 }} spacing="xl">
         <InputFormLotto />
         <InputFormBonus />
-        <InputFormLotto />
+        <InputFormPowerBall />
         <InputFormLotto />
       </SimpleGrid>
     </Container>

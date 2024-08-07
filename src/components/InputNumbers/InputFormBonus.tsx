@@ -49,34 +49,27 @@ export function InputFormBonus({
 
   return (
     <div>
-      <Flex
-        direction="column"
-        align="center"
-        justify="center"
-        className={styles.flex}
-      >
-        <h1 className={styles.title}>{title}</h1>
-        <Grid>
-          {numbers.map((number, index) => (
-            <GridCol span={12} key={index}>
-              <TextInput
-                placeholder={`${placeholderPrefix} ${index + 1}`}
-                value={number === 0 ? "" : number.toString()}
-                onChange={(event) =>
-                  handleChange(index, event.currentTarget.value)
-                }
-                type="number"
-                min={minNumber}
-                max={maxNumber}
-                className={styles.input}
-              />
-            </GridCol>
-          ))}
-        </Grid>
-        <Button onClick={handleSubmit} className={styles.button}>
-          {buttonText}
-        </Button>
-      </Flex>
+      <h1 className={styles.title}>{title}</h1>
+      <Grid>
+        {numbers.map((number, index) => (
+          <GridCol span={12} key={index}>
+            <TextInput
+              placeholder={`${placeholderPrefix} ${index + 1}`}
+              value={number === 0 ? "" : number.toString()}
+              onChange={(event) =>
+                handleChange(index, event.currentTarget.value)
+              }
+              type="number"
+              min={minNumber}
+              max={maxNumber}
+              className={styles.input}
+            />
+          </GridCol>
+        ))}
+      </Grid>
+      <Button onClick={handleSubmit} className={styles.button}>
+        {buttonText}
+      </Button>
     </div>
   );
 }

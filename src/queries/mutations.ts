@@ -11,3 +11,9 @@ export const CREATE_BONUS = gql`
     createBonus(bonus: { numbers: $numbers })
   }
 `;
+
+export const CREATE_POWERBALL = gql`
+  mutation CreatePowerBall($numbers: [Int!]!) {
+    createPowerBall(powerBall: { numbers: $numbers })
+  }
+`;

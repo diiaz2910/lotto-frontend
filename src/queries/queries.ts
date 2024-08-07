@@ -81,3 +81,13 @@ export const GET_LAST_BONUS = gql`
     }
   }
 `;
+
+export const GET_LAST_POWERBALL = gql`
+  query GetLastPowerBall {
+    getLastPowerBall {
+      _id
+      index
+      numbers
+    }
+  }
+`;

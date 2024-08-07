@@ -12,7 +12,7 @@ const Lotto = () => {
 
   return (
     <div>
-      <h1>Last Game</h1>
+      <h1>Last Lotto</h1>
       <ul>
         <li>
           <h2> {item.numbers.join(", ")} </h2>
