@@ -40,6 +40,16 @@ export const GET_STRIKE = gql`
   }
 `;
 
+export const GET_LAST_STRIKE = gql`
+  query GetStrike {
+    getLastStrike {
+      _id
+      index
+      numbers
+    }
+  }
+`;
+
 export const GET_POWERBALL = gql`
   query GetPowerBall {
     powerball {

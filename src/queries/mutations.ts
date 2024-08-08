@@ -17,3 +17,9 @@ export const CREATE_POWERBALL = gql`
     createPowerBall(powerBall: { numbers: $numbers })
   }
 `;
+
+export const CREATE_STRIKE = gql`
+  mutation CreateStrike($numbers: [Int!]!) {
+    createStrike(strike: { numbers: $numbers })
+  }
+`;

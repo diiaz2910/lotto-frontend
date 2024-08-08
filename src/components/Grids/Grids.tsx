@@ -4,6 +4,7 @@ import { Container, Card, SimpleGrid, rem } from "@mantine/core";
 import Lotto from "../ItemsList/Lotto";
 import Bonus from "../ItemsList/Bonus";
 import PowerBall from "../ItemsList/Powerball";
+import Strike from "../ItemsList/Strike";
 
 const PRIMARY_COL_HEIGHT = rem(300);
 
@@ -21,7 +22,7 @@ export function LeadGrid() {
           <PowerBall />
         </Card>
         <Card shadow="xl" radius="md" style={{ height: PRIMARY_COL_HEIGHT }}>
-          <Lotto />
+          <Strike />
         </Card>
       </SimpleGrid>
     </Container>
