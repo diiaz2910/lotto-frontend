@@ -1,0 +1,30 @@
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Source Code Pro Variable", monospace;
+}
+
+body {
+  background: linear-gradient(135deg, #fcfdff, #d8d8d8); /* Background Colors */
+  background-size: cover;
+  background-attachment: fixed; /* Background to cover all the screen */
+  font-family: sans-serif;
+}
+
+/* Noise effect */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-dark.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.1;
+  z-index: -1;
+}
