@@ -39,6 +39,9 @@ export function ChartsCards() {
 
   return (
     <Container my="md">
+      <div>
+        <h1>Charts</h1>
+      </div>
       <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
         <Card
           key={chart._id}
