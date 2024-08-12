@@ -1,4 +1,3 @@
-//import React, { useState } from "react";
 import { Card, Image, Group, Text, Container, SimpleGrid } from "@mantine/core";
 import { useQuery } from "@apollo/client";
 

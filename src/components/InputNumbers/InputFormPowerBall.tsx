@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useMutation } from "@apollo/client";
-import { TextInput, Button, Grid, Flex, GridCol } from "@mantine/core";
+import { TextInput, Button, Grid, GridCol } from "@mantine/core";
 
 // queries
 import { CREATE_POWERBALL } from "../../queries/mutations";

@@ -1,4 +1,3 @@
-import React from "react";
 import { useQuery } from "@apollo/client";
 import { GET_LAST_STRIKE } from "../../../queries/queries";
 
