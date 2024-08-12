@@ -6,6 +6,7 @@ import logo from "../../assets/logo.png";
 import classes from "./Footer.module.css";
 
 const links = [{ link: "https://github.com/diiaz2910", label: "Contact" }];
+const instagramLink = "https://www.instagram.com/rdiiazr/";
 
 export function FooterCentered() {
   const items = links.map((link) => (
@@ -28,18 +29,24 @@ export function FooterCentered() {
         <img
           src={logo}
           alt="Logo"
-          style={{ width: rem(50), height: rem(50) }}
+          style={{ width: rem(40), height: rem(40) }}
         />
 
         <Group className={classes.links}>{items}</Group>
 
         <Group gap="xs" justify="flex-end" wrap="nowrap">
-          <ActionIcon size="xl" variant="default" radius="lg">
-            <IconBrandInstagram
-              style={{ width: rem(18), height: rem(18) }}
-              stroke={1.5}
-            />
-          </ActionIcon>
+          <Anchor
+            href={instagramLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <ActionIcon size="xl" variant="default" radius="xl">
+              <IconBrandInstagram
+                style={{ width: rem(18), height: rem(18) }}
+                stroke={2}
+              />
+            </ActionIcon>
+          </Anchor>
         </Group>
       </div>
     </div>

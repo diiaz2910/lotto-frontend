@@ -1,13 +1,5 @@
 //import React, { useState } from "react";
-import {
-  Card,
-  Image,
-  Group,
-  Text,
-  //useMantineTheme,
-  Container,
-  SimpleGrid,
-} from "@mantine/core";
+import { Card, Image, Group, Text, Container, SimpleGrid } from "@mantine/core";
 import { useQuery } from "@apollo/client";
 
 // queries
@@ -22,7 +14,8 @@ import classes from "./ChartsCards.module.css";
 export function ChartsCards() {
   //const theme = useMantineTheme();
   const { loading, error, data } = useQuery<{ getLastChart: Chart }>(
-    GET_LAST_CHART
+    GET_LAST_CHART,
+    { variables: { name: "chart1" } }
   );
 
   if (error) {
@@ -42,7 +35,7 @@ export function ChartsCards() {
       <div>
         <h1>Charts</h1>
       </div>
-      <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
+      <SimpleGrid cols={{ base: 2, sm: 2 }} spacing="md">
         <Card
           key={chart._id}
           withBorder
