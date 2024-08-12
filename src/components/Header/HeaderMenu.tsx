@@ -1,8 +1,12 @@
-import { Menu, Group, Center, Burger, Container } from "@mantine/core";
+import { Menu, Group, Center, Burger, Container, rem } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconChevronDown } from "@tabler/icons-react";
-import { MantineLogo } from "@mantinex/mantine-logo";
+
+// styles
 import classes from "./HeaderMenu.module.css";
+
+// assets
+import logo from "../../assets/logo.png";
 
 const links = [
   { link: "/about", label: "Check Your Numbers" },
@@ -68,7 +72,11 @@ export function HeaderMenu() {
     <header className={classes.header}>
       <Container size="md">
         <div className={classes.inner}>
-          <MantineLogo size={28} />
+          <img
+            src={logo}
+            alt="Logo"
+            style={{ width: rem(50), height: rem(50) }}
+          />
           <Group gap={5} visibleFrom="sm">
             {items}
           </Group>
