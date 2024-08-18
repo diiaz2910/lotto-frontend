@@ -3,6 +3,7 @@
   <img src="https://github.com/diiaz2910/assets-repo/blob/master/png-transparent-google-colab-logo-tech-companies-removebg-preview.png?raw=true" width="300">
   <a href="https://reactjs.org" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" width="200" alt="React Logo"></a>
   <h1>Lotto Project</h1>
+    <h2>https://lotto-frontend-ruddy.vercel.app/</h2><br/>
   <p>This Lotto project aims to display statistics about numbers in the New Zealand lottery game. It will present numbers and statistics obtained from Google Colab, and display them on both web and mobile applications. The app is designed to be updated every time a game is played, ensuring that the data and statistics remain current. Check more on the backend repo</p>
 </div>
 
