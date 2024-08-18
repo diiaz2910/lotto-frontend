@@ -10,6 +10,7 @@ import logo from "../../assets/logo.png";
 
 const links = [
   { link: "/about", label: "Check Your Numbers" },
+  { link: "/100againstOne", label: "100 Against One" },
   { link: "/about", label: "Statistics" },
   {
     link: "#1",
