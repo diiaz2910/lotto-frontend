@@ -78,6 +78,7 @@ export const GET_LAST_CHART = gql`
       description
       imageUrl
       index
+      name
     }
   }
 `;
