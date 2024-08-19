@@ -13,7 +13,7 @@ import classes from "./ChartsCards.module.css";
 export function ChartsCards() {
   const { loading, error, data } = useQuery<{ getLastChart: Chart }>(
     GET_LAST_CHART,
-    { variables: { name: "frequency_chart" } }
+    { variables: { name: "chart1" } }
   );
 
   if (error) {
@@ -28,44 +28,36 @@ export function ChartsCards() {
 
   const chart = data.getLastChart;
 
-  if (chart.name === "frequency_chart") {
-    return (
-      <Container my="md">
-        <div>
-          <h1>Charts</h1>
-        </div>
-        <SimpleGrid cols={{ base: 2, sm: 2 }} spacing="md">
-          <Card
-            key={chart._id}
-            withBorder
-            padding="lg"
-            radius="md"
-            className={classes.card}
-          >
-            <Card.Section mb="sm">
-              <Image
-                src={chart.imageUrl}
-                alt={chart.description}
-                height={300}
-              />
-            </Card.Section>
+  return (
+    <Container my="md">
+      <div>
+        <h1>Charts</h1>
+      </div>
+      <SimpleGrid cols={{ base: 2, sm: 2 }} spacing="md">
+        <Card
+          key={chart._id}
+          withBorder
+          padding="lg"
+          radius="md"
+          className={classes.card}
+        >
+          <Card.Section mb="sm">
+            <Image src={chart.imageUrl} alt={chart.description} height={300} />
+          </Card.Section>
 
-            <Text fw={700} className={classes.title} mt="xs">
-              {chart.description}
-            </Text>
+          <Text fw={700} className={classes.title} mt="xs">
+            {chart.description}
+          </Text>
 
-            <Card.Section className={classes.footer}>
-              <Group justify="space-between">
-                <Text fz="xs" c="dimmed">
-                  Chart from Google Colab Notebook
-                </Text>
-              </Group>
-            </Card.Section>
-          </Card>
-        </SimpleGrid>
-      </Container>
-    );
-  } else {
-    <p>No matching chart found.</p>;
-  }
+          <Card.Section className={classes.footer}>
+            <Group justify="space-between">
+              <Text fz="xs" c="dimmed">
+                Chart from Google Colab Notebook
+              </Text>
+            </Group>
+          </Card.Section>
+        </Card>
+      </SimpleGrid>
+    </Container>
+  );
 }
