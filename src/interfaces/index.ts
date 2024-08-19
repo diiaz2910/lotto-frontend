@@ -12,4 +12,5 @@ export interface Chart {
   imageUrl: string;
   description: string;
   index: number;
+  name: string;
 }
