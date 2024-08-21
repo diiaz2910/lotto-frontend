@@ -63,10 +63,10 @@ export const GET_POWERBALL = gql`
 export const GET_CHART = gql`
   query GetCharts {
     getCharts {
-      _id
       description
       imageUrl
       index
+      name
     }
   }
 `;

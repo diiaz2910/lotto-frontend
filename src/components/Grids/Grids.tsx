@@ -6,7 +6,7 @@ import Bonus from "../ItemsList/Bonus";
 import PowerBall from "../ItemsList/Powerball";
 import Strike from "../ItemsList/Strike";
 
-const PRIMARY_COL_HEIGHT = rem(150);
+const PRIMARY_COL_HEIGHT = rem(300);
 
 export function LeadGrid() {
   return (

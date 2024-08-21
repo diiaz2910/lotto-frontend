@@ -25,22 +25,6 @@ const Lotto = () => {
       </ul>
     </div>
   );
-  /*return (
-    <div>
-      <h1>Lotto Numbers</h1>
-      <ul>
-        {data.getCombinations.map(
-          (item: { _id: string; numbers: number[]; index: string }) => (
-            <li key={item._id}>
-              <h2> {item.numbers.join(", ")} </h2>
-              <p> {item._id} </p>
-              <p> {item.index} </p>
-            </li>
-          )
-        )}
-      </ul>
-    </div>
-  );*/
 };
 
 export default Lotto;

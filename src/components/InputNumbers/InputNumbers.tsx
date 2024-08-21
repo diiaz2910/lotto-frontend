@@ -8,7 +8,7 @@ import InputFormBonus from "./InputFormBonus";
 import InputFormPowerBall from "./InputFormPowerBall";
 import InputFormStrike from "./InputFormStrike";
 
-const InputNumbers = () => {
+export function InputNumbers() {
   return (
     <Container className={styles.container}>
       <div>
@@ -23,6 +23,6 @@ const InputNumbers = () => {
       </SimpleGrid>
     </Container>
   );
-};
+}
 
 export default InputNumbers;
