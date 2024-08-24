@@ -14,7 +14,7 @@ export function InputNumbers() {
       <div>
         <h1>Update Results</h1>
       </div>
-      {/* reminder sm is a breakpoint within mantine responsive system. 2 columns on small screens and 4 columns on sm screens or higher */}
+      {/* sm is a breakpoint within mantine responsive system. 2 columns on small screens and 4 columns on sm screens or higher */}
       <SimpleGrid cols={{ base: 2, sm: 4 }} spacing="xl">
         <InputFormLotto />
         <InputFormBonus />
