@@ -36,7 +36,7 @@ export function ChartsCards() {
       {} as Chart
     );
 
-  // Filtrar gráficos para el nombre 'chart1'
+  // Filtrar gráficos para el nombre 'chart1 '
   const chart1 = charts
     .filter((chart) => chart.name === "probability")
     .reduce(
