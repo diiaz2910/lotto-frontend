@@ -4,7 +4,7 @@ import { MantineProvider } from "@mantine/core";
 // pages
 import Home from "./pages/Home";
 
-// Styles
+// styles
 import "@mantine/core/styles.css";
 
 function App() {
