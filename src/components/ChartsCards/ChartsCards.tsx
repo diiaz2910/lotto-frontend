@@ -30,7 +30,7 @@ export function ChartsCards() {
 
   // Filtrar gráficos para el nombre 'Frequency'
   const frequencyChart = charts
-    .filter((chart) => chart.name === "frequency_chart1")
+    .filter((chart) => chart.name === "frequencyChartOrange")
     .reduce(
       (prev, current) => (prev.index > current.index ? prev : current),
       {} as Chart
@@ -45,11 +45,11 @@ export function ChartsCards() {
     );
 
   return (
-    <Container my="md">
+    <Container my="lg">
       <div>
         <h1>Charts</h1>
       </div>
-      <SimpleGrid cols={{ base: 2, sm: 2 }} spacing="md">
+      <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
         {frequencyChart && (
           <Card
             key={frequencyChart._id}
@@ -68,6 +68,66 @@ export function ChartsCards() {
 
             <Text fw={700} className={classes.title} mt="xs">
               {frequencyChart.description}
+            </Text>
+
+            <Card.Section className={classes.footer}>
+              <Group justify="space-between">
+                <Text fz="xs" c="dimmed">
+                  Chart from Google Colab Notebook
+                </Text>
+              </Group>
+            </Card.Section>
+          </Card>
+        )}
+
+        {chart1 && (
+          <Card
+            key={chart1._id}
+            withBorder
+            padding="lg"
+            radius="md"
+            className={classes.card}
+          >
+            <Card.Section mb="sm">
+              <Image
+                src={chart1.imageUrl}
+                alt={chart1.description}
+                height={300}
+              />
+            </Card.Section>
+
+            <Text fw={700} className={classes.title} mt="xs">
+              {chart1.description}
+            </Text>
+
+            <Card.Section className={classes.footer}>
+              <Group justify="space-between">
+                <Text fz="xs" c="dimmed">
+                  Chart from Google Colab Notebook
+                </Text>
+              </Group>
+            </Card.Section>
+          </Card>
+        )}
+
+        {chart1 && (
+          <Card
+            key={chart1._id}
+            withBorder
+            padding="lg"
+            radius="md"
+            className={classes.card}
+          >
+            <Card.Section mb="sm">
+              <Image
+                src={chart1.imageUrl}
+                alt={chart1.description}
+                height={300}
+              />
+            </Card.Section>
+
+            <Text fw={700} className={classes.title} mt="xs">
+              {chart1.description}
             </Text>
 
             <Card.Section className={classes.footer}>
