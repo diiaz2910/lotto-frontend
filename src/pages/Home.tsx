@@ -14,8 +14,8 @@ const Home: React.FC = () => {
       <HeaderMenu />
       <LeadGrid />
       <ChartsCards />
-      <InputNumbers />
       <Simulations />
+      <InputNumbers />
       <FooterCentered />
     </div>
   );
