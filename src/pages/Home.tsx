@@ -6,7 +6,7 @@ import { LeadGrid } from "../components/Grids/Grids";
 import { FooterCentered } from "../components/Footer/Footer";
 import { InputNumbers } from "../components/InputNumbers/InputNumbers";
 import { ChartsCards } from "../components/ChartsCards/ChartsCards";
-import { HundredVsOne } from "../components/HundredVsOne/HundredVsOne";
+import { Simulations } from "../components/Simulations/Simulations";
 
 const Home: React.FC = () => {
   return (
@@ -15,7 +15,7 @@ const Home: React.FC = () => {
       <LeadGrid />
       <ChartsCards />
       <InputNumbers />
-      <HundredVsOne />
+      <Simulations />
       <FooterCentered />
     </div>
   );
