@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Table,
   ScrollArea,
@@ -8,7 +8,6 @@ import {
   Center,
   TextInput,
   rem,
-  keys,
   Container,
   SimpleGrid,
 } from "@mantine/core";
@@ -18,12 +17,19 @@ import {
   IconChevronUp,
   IconSearch,
 } from "@tabler/icons-react";
+import { useQuery } from "@apollo/client";
+
+// Components
+
+// Queries
+import { GET_SIMULATIONS } from "../../queries/queries";
+
+// Styles
 import classes from "./Simulations.module.css";
 
 interface RowData {
-  name: string;
-  email: string;
-  company: string;
+  numbers: number[];
+  method: string;
 }
 
 interface ThProps {
@@ -56,10 +62,15 @@ function Th({ children, reversed, sorted, onSort }: ThProps) {
 }
 
 function filterData(data: RowData[], search: string) {
-  const query = search.toLowerCase().trim();
-  return data.filter((item) =>
-    keys(data[0]).some((key) => item[key].toLowerCase().includes(query))
-  );
+  const queries = search.split(",").map((query) => query.trim());
+
+  return data.filter((item) => {
+    return queries.every(
+      (query) =>
+        item.method.toLowerCase().includes(query.toLowerCase()) ||
+        item.numbers.some((num) => num.toString().includes(query))
+    );
+  });
 }
 
 function sortData(
@@ -74,82 +85,87 @@ function sortData(
 
   return filterData(
     [...data].sort((a, b) => {
-      if (payload.reversed) {
-        return b[sortBy].localeCompare(a[sortBy]);
+      if (sortBy === "method") {
+        const aMethod = a[sortBy].toLowerCase();
+        const bMethod = b[sortBy].toLowerCase();
+
+        if (payload.reversed) {
+          return bMethod.localeCompare(aMethod);
+        }
+        return aMethod.localeCompare(bMethod);
+      } else if (sortBy === "numbers") {
+        const aNumbers = a[sortBy].join(", ");
+        const bNumbers = b[sortBy].join(", ");
+
+        if (payload.reversed) {
+          return bNumbers.localeCompare(aNumbers);
+        }
+        return aNumbers.localeCompare(bNumbers);
       }
 
-      return a[sortBy].localeCompare(b[sortBy]);
+      return 0; // Default return value if sortBy is null
     }),
     payload.search
   );
 }
 
-const data = [
-  {
-    name: "Athena Weissnat",
-    company: "Little - Rippin",
-    email: "Elouise.Prohaska@yahoo.com",
-  },
-  {
-    name: "Deangelo Runolfsson",
-    company: "Greenfelder - Krajcik",
-    email: "Kadin_Trantow87@yahoo.com",
-  },
-  {
-    name: "Danny Carter",
-    company: "Kohler and Sons",
-    email: "Marina3@hotmail.com",
-  },
-  {
-    name: "Trace Tremblay PhD",
-    company: "Crona, Aufderhar and Senger",
-    email: "Antonina.Pouros@yahoo.com",
-  },
-  {
-    name: "Derek Dibbert",
-    company: "Gottlieb LLC",
-    email: "Abagail29@hotmail.com",
-  },
-];
-
 export function Simulations() {
+  const { loading, error, data } = useQuery(GET_SIMULATIONS);
   const [search, setSearch] = useState("");
-  const [sortedData, setSortedData] = useState(data);
+  const [sortedData, setSortedData] = useState<RowData[]>([]);
   const [sortBy, setSortBy] = useState<keyof RowData | null>(null);
   const [reverseSortDirection, setReverseSortDirection] = useState(false);
+
+  useEffect(() => {
+    if (data && data.getSimulations) {
+      const simulations = data.getSimulations.slice(0, 5); // Limita a 5 resultados
+      setSortedData(simulations);
+    }
+  }, [data]);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error loading data</p>;
 
   const setSorting = (field: keyof RowData) => {
     const reversed = field === sortBy ? !reverseSortDirection : false;
     setReverseSortDirection(reversed);
     setSortBy(field);
-    setSortedData(sortData(data, { sortBy: field, reversed, search }));
+    setSortedData(
+      sortData(data.getSimulations, { sortBy: field, reversed, search })
+    );
   };
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.currentTarget;
     setSearch(value);
     setSortedData(
-      sortData(data, { sortBy, reversed: reverseSortDirection, search: value })
+      sortData(data.getSimulations, {
+        sortBy,
+        reversed: reverseSortDirection,
+        search: value,
+      })
     );
   };
 
-  const rows = sortedData.map((row) => (
-    <Table.Tr key={row.name}>
-      <Table.Td>{row.name}</Table.Td>
-      <Table.Td>{row.email}</Table.Td>
-      <Table.Td>{row.company}</Table.Td>
+  const rows = sortedData.map((row, index) => (
+    <Table.Tr key={index}>
+      <Table.Td>{row.numbers.join(", ")}</Table.Td>
+      <Table.Td>{row.method}</Table.Td>
     </Table.Tr>
   ));
 
   return (
     <Container my="md">
       <div>
-        <h1>100 vs One</h1>
+        <h1>1000 vs One - August - 31 - 2024</h1>
+        {/* <h6>
+          <Lotto />
+        </h6> */}
       </div>
       <SimpleGrid cols={{ base: 1, sm: 1 }} spacing="md">
-        <ScrollArea>
+        <ScrollArea style={{ height: 200 }}>
           <TextInput
-            placeholder="Search by any field"
+            placeholder="Search"
             mb="md"
             leftSection={
               <IconSearch
@@ -169,25 +185,18 @@ export function Simulations() {
             <Table.Tbody>
               <Table.Tr>
                 <Th
-                  sorted={sortBy === "name"}
+                  sorted={sortBy === "numbers"}
                   reversed={reverseSortDirection}
-                  onSort={() => setSorting("name")}
+                  onSort={() => setSorting("numbers")}
                 >
-                  Name
+                  Numbers
                 </Th>
                 <Th
-                  sorted={sortBy === "email"}
+                  sorted={sortBy === "method"}
                   reversed={reverseSortDirection}
-                  onSort={() => setSorting("email")}
+                  onSort={() => setSorting("method")}
                 >
-                  Email
-                </Th>
-                <Th
-                  sorted={sortBy === "company"}
-                  reversed={reverseSortDirection}
-                  onSort={() => setSorting("company")}
-                >
-                  Company
+                  Method
                 </Th>
               </Table.Tr>
             </Table.Tbody>
@@ -196,7 +205,7 @@ export function Simulations() {
                 rows
               ) : (
                 <Table.Tr>
-                  <Table.Td colSpan={Object.keys(data[0]).length}>
+                  <Table.Td colSpan={2}>
                     <Text fw={500} ta="center">
                       Nothing found
                     </Text>

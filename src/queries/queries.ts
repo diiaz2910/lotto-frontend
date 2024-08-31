@@ -102,3 +102,12 @@ export const GET_LAST_POWERBALL = gql`
     }
   }
 `;
+
+export const GET_SIMULATIONS = gql`
+  query GetSimulations {
+    getSimulations {
+      method
+      numbers
+    }
+  }
+`;
