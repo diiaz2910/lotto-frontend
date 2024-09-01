@@ -17,12 +17,12 @@ const Strike = () => {
           <h2> {item.numbers.join(", ")} </h2>
         </li>
       </ul>
-      <h1>Game</h1>
+      {/* <h1>Game</h1>
       <ul>
         <li>
           <h2> {item.index} </h2>
         </li>
-      </ul>
+      </ul> */}
     </div>
   );
 };

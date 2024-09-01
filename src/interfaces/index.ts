@@ -14,3 +14,15 @@ export interface Chart {
   index: number;
   name: string;
 }
+
+export interface RowData {
+  numbers: number[];
+  method: string;
+}
+
+export interface ThProps {
+  children: React.ReactNode;
+  reversed: boolean;
+  sorted: boolean;
+  onSort(): void;
+}
