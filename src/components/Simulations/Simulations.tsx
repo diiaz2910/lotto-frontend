@@ -74,6 +74,12 @@ export function Simulations() {
     <Container my="md">
       <div>
         <h1>1000 vs One</h1>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio
+          suscipit deserunt nihil sed, explicabo hic voluptatibus est. At
+          asperiores magnam doloremque alias, quasi, ex necessitatibus nihil,
+          odit omnis beatae inventore!
+        </p>
         <h6>
           <Lotto />
         </h6>
