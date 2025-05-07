@@ -14,8 +14,7 @@ import { useQuery } from "@apollo/client";
 // queries
 import { GET_SIMULATIONS } from "../../queries/queries";
 
-// utils
-import { sortData } from "../../utils/searchAndSort";
+// enums
 import { SortFields } from "../../enums/SortFields";
 
 // components
@@ -33,9 +32,8 @@ export function Simulations() {
   const [reverseSortDirection, setReverseSortDirection] = useState(false);
 
   useEffect(() => {
-    if (data && data.getSimulations) {
-      const simulations = data.getSimulations.slice(0, 5); // Limita a 5 resultados
-      setSortedData(simulations);
+    if (data?.getSimulations) {
+      setSortedData(data.getSimulations.slice(0, 5));
     }
   }, [data]);
 
@@ -46,25 +44,54 @@ export function Simulations() {
     const reversed = field === sortBy ? !reverseSortDirection : false;
     setReverseSortDirection(reversed);
     setSortBy(field);
-    setSortedData(
-      sortData(data.getSimulations, { sortBy: field, reversed, search })
-    );
+    // Sorting sin aplicar búsqueda (para mantener comportamiento anterior si se desea)
+    const sorted = [...data.getSimulations].sort((a, b) => {
+      if (field === SortFields.METHOD) {
+        return reversed
+          ? b.method.localeCompare(a.method)
+          : a.method.localeCompare(b.method);
+      } else {
+        return reversed
+          ? b.numbers.length - a.numbers.length
+          : a.numbers.length - b.numbers.length;
+      }
+    });
+    setSortedData(sorted);
   };
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.currentTarget;
+    let { value } = event.currentTarget;
+
+    // 1) Eliminar todo menos dígitos
+    value = value.replace(/[^0-9]/g, "");
+
+    // 2) Agrupar cada 2 dígitos e insertar comas
+    const groups = value.match(/.{1,2}/g);
+    value = groups ? groups.join(",") : "";
     setSearch(value);
-    setSortedData(
-      sortData(data.getSimulations, {
-        sortBy,
-        reversed: reverseSortDirection,
-        search: value,
-      })
-    );
+
+    // Convertir a array de números
+    const searchNumbers = value
+      .split(",")
+      .map((n) => parseInt(n, 10))
+      .filter((n) => !isNaN(n));
+
+    // Ordenar por cantidad de coincidencias con searchNumbers (de mayor a menor)
+    const sorted = [...data.getSimulations].sort((a, b) => {
+      const aMatches = a.numbers.filter((n: number) =>
+        searchNumbers.includes(n)
+      ).length;
+      const bMatches = b.numbers.filter((n: number) =>
+        searchNumbers.includes(n)
+      ).length;
+      return bMatches - aMatches;
+    });
+
+    setSortedData(sorted);
   };
 
-  const rows = sortedData.map((row, index) => (
-    <Table.Tr key={index}>
+  const rows = sortedData.map((row, idx) => (
+    <Table.Tr key={idx}>
       <Table.Td>{row.numbers.join(", ")}</Table.Td>
       <Table.Td>{row.method}</Table.Td>
     </Table.Tr>
@@ -75,19 +102,20 @@ export function Simulations() {
       <div>
         <h1>1000 vs One</h1>
         <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio
-          suscipit deserunt nihil sed, explicabo hic voluptatibus est. At
-          asperiores magnam doloremque alias, quasi, ex necessitatibus nihil,
-          odit omnis beatae inventore!
+          Esta herramienta te permite comparar 100 combinaciones numéricas
+          generadas mediante diferentes técnicas de predicción con el resultado
+          más reciente de la lotería, facilitando el análisis de qué métodos se
+          acercan más al número ganador.
         </p>
         <h6>
           <Lotto />
         </h6>
       </div>
+
       <SimpleGrid cols={{ base: 1, sm: 1 }} spacing="md">
-        <ScrollArea style={{ height: 200 }}>
+        <ScrollArea style={{ height: 300 }}>
           <TextInput
-            placeholder="Search"
+            placeholder="Search (ej: 17,29)"
             mb="md"
             leftSection={
               <IconSearch
@@ -98,6 +126,7 @@ export function Simulations() {
             value={search}
             onChange={handleSearchChange}
           />
+
           <Table
             horizontalSpacing="md"
             verticalSpacing="xs"
@@ -122,6 +151,7 @@ export function Simulations() {
                 </Th>
               </Table.Tr>
             </Table.Thead>
+
             <Table.Tbody>
               {rows.length > 0 ? (
                 rows

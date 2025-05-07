@@ -8,6 +8,9 @@ import { CREATE_STRIKE } from "../../queries/mutations";
 // interfaces
 import { InputNumbersProps } from "../../interfaces/index";
 
+// utils
+import { distributeNumbers } from "../../utils/parseNumbers";
+
 // styles
 import styles from "../Styles/InputNumbers.module.css";
 
@@ -23,10 +26,24 @@ export function InputFormStrike({
   const [createStrike] = useMutation(CREATE_STRIKE);
 
   const handleChange = (index: number, value: string) => {
+    const cleanValue = value.replace(/[^0-9]/g, "");
+
+    if (cleanValue.length > 2) {
+      const updated = distributeNumbers(value, index, numbers);
+      setNumbers(updated);
+    } else {
+      const num = parseInt(cleanValue, 10);
+      const newNumbers = [...numbers];
+      newNumbers[index] = isNaN(num) ? 0 : num;
+      setNumbers(newNumbers);
+    }
+
+    /*
     const num = parseInt(value, 10);
     const newNumbers = [...numbers];
     newNumbers[index] = isNaN(num) ? 0 : num;
     setNumbers(newNumbers);
+    */
   };
 
   const handleSubmit = async () => {

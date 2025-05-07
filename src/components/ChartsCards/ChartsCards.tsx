@@ -71,7 +71,7 @@ export function ChartsCards() {
           quod. Soluta?
         </p>
       </div>
-      <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
+      <SimpleGrid cols={{ base: 1, md: 1, lg: 1 }} spacing="md">
         {frequencyChart && (
           <Card
             key={frequencyChart._id}
@@ -84,6 +84,8 @@ export function ChartsCards() {
               <Image
                 src={frequencyChart.imageUrl}
                 alt={frequencyChart.description}
+                fit="contain"
+                width="100%"
                 height={300}
               />
             </Card.Section>
@@ -114,7 +116,9 @@ export function ChartsCards() {
               <Image
                 src={chart1.imageUrl}
                 alt={chart1.description}
-                height={200}
+                fit="contain"
+                width="100%"
+                height={300}
               />
             </Card.Section>
 
@@ -144,6 +148,8 @@ export function ChartsCards() {
               <Image
                 src={chart2.imageUrl}
                 alt={chart2.description}
+                fit="contain"
+                width="100%"
                 height={400}
               />
             </Card.Section>
@@ -174,7 +180,9 @@ export function ChartsCards() {
               <Image
                 src={chart3.imageUrl}
                 alt={chart3.description}
-                height={300}
+                fit="contain"
+                width="100%"
+                height={400}
               />
             </Card.Section>
 
